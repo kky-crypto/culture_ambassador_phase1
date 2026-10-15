@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>컬처 앰배서더 50명 양성 계획</title>
+<style>
+:root{
+  color-scheme:light;
+  --ink:#1E2427;--ink-2:#4F5A61;--ink-3:#77828A;
+  --line:#E1E7E8;--line-2:#CBD5D6;--paper:#FFFFFF;--wash:#F4F7F7;
+  --mint:#2AC1BC;--mint-ink:#08746F;--mint-bg:#E6F7F6;--mint-line:#9EDFDC;
+  --blue:#3D6FE0;--blue-ink:#2650B0;--blue-bg:#EDF2FD;--blue-line:#B7CAF4;
+  --amber:#E8962A;--amber-ink:#975A07;--amber-bg:#FDF3E3;--amber-line:#F2CF97;
+  --tip-bg:#1E2427;--tip-ink:#FFFFFF;--warn-bg:#FFF4D6;--warn-ink:#8A5B00;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --ink:#E9EEEF;--ink-2:#B5C0C4;--ink-3:#8E9A9F;
+  --line:#2B3437;--line-2:#3B474B;--paper:#151A1C;--wash:#1C2326;
+  --mint:#3FD2CD;--mint-ink:#7FE3DF;--mint-bg:#123331;--mint-line:#246B68;
+  --blue:#7A9DF0;--blue-ink:#A9C0F6;--blue-bg:#1A2440;--blue-line:#34487E;
+  --amber:#F0AE55;--amber-ink:#F5C887;--amber-bg:#352612;--amber-line:#6E4E1D;
+  --tip-bg:#E9EEEF;--tip-ink:#151A1C;--warn-bg:#3A2F12;--warn-ink:#F1D27E;
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ink:#E9EEEF;--ink-2:#B5C0C4;--ink-3:#8E9A9F;
+  --line:#2B3437;--line-2:#3B474B;--paper:#151A1C;--wash:#1C2326;
+  --mint:#3FD2CD;--mint-ink:#7FE3DF;--mint-bg:#123331;--mint-line:#246B68;
+  --blue:#7A9DF0;--blue-ink:#A9C0F6;--blue-bg:#1A2440;--blue-line:#34487E;
+  --amber:#F0AE55;--amber-ink:#F5C887;--amber-bg:#352612;--amber-line:#6E4E1D;
+  --tip-bg:#E9EEEF;--tip-ink:#151A1C;--warn-bg:#3A2F12;--warn-ink:#F1D27E;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:70px;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",system-ui,sans-serif;font-size:16px;line-height:1.7;word-break:keep-all}
+a{color:var(--mint-ink)}
+p{margin:0 0 10px}
+.toc{position:sticky;top:0;z-index:40;background:var(--paper);border-bottom:1px solid var(--line)}
+.toc-in{max-width:1040px;margin:0 auto;padding:10px 24px;display:flex;gap:2px;flex-wrap:wrap;align-items:center}
+.toc b{font-size:14px;margin-right:12px}
+.toc a{font-size:14px;color:var(--ink-2);text-decoration:none;padding:5px 10px;border-radius:6px}
+.toc a:hover{background:var(--wash)}
+.toc a.on{background:var(--mint-bg);color:var(--mint-ink);font-weight:600}
+a:focus-visible,.term:focus-visible{outline:2px solid var(--mint);outline-offset:2px;border-radius:4px}
+.page{max-width:1040px;margin:0 auto;padding:32px 24px 96px}
+section{padding:44px 0 4px;border-top:1px solid var(--line);margin-top:36px}
+section.first{border-top:0;margin-top:0;padding-top:16px}
+.no{font-size:14px;font-weight:700;color:var(--mint-ink);margin:0 0 4px}
+h1{font-size:34px;line-height:1.35;margin:0 0 12px;letter-spacing:-0.02em;max-width:860px}
+h2{font-size:25px;line-height:1.4;margin:0 0 20px;letter-spacing:-0.01em;max-width:860px}
+h3{font-size:18px;margin:0 0 8px}
+.lead{font-size:18px;color:var(--ink-2);max-width:800px;margin:0 0 24px}
+.muted{color:var(--ink-2)}.small{font-size:14px}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:1px 7px;border-radius:5px;background:var(--warn-bg);color:var(--warn-ink);margin-left:4px;vertical-align:2px}
+/* tooltip */
+.term{border-bottom:1.5px dotted var(--ink-3);cursor:help;position:relative;white-space:nowrap}
+.term::after{content:attr(data-tip);position:absolute;left:0;top:calc(100% + 6px);width:270px;white-space:normal;background:var(--tip-bg);color:var(--tip-ink);font-size:13px;font-weight:400;line-height:1.55;padding:9px 11px;border-radius:8px;z-index:50;opacity:0;pointer-events:none;transform:translateY(-3px);transition:opacity .12s,transform .12s}
+.term:hover::after,.term:focus::after{opacity:1;transform:none}
+/* boxes */
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.box{border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.hyp{border-radius:12px;padding:18px 22px;background:var(--mint-bg);border:1px solid var(--mint-line);margin:0 0 14px}
+.hyp .k{font-size:14px;font-weight:700;color:var(--mint-ink);margin:0 0 2px}
+.hyp p{font-size:19px;font-weight:600;line-height:1.6;margin:0}
+.hyp.blue{background:var(--blue-bg);border-color:var(--blue-line)}.hyp.blue .k{color:var(--blue-ink)}
+.hyp.amber{background:var(--amber-bg);border-color:var(--amber-line)}.hyp.amber .k{color:var(--amber-ink)}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;vertical-align:top;padding:9px 12px;border-bottom:1px solid var(--line)}
+th{font-size:14px;color:var(--ink-2);font-weight:600;background:var(--wash)}
+tbody tr:hover td{background:var(--wash)}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.tw{overflow-x:auto}
+.btn{display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:var(--mint-ink);text-decoration:none;border:1px solid var(--mint-line);border-radius:8px;padding:7px 12px;background:var(--mint-bg)}
+.btn:hover{border-color:var(--mint)}
+.btn svg{width:14px;height:14px}
+/* hero */
+.hero{display:grid;grid-template-columns:auto minmax(0,1fr);gap:36px;align-items:center;margin:28px 0 8px}
+.big{font-size:104px;font-weight:800;line-height:.95;letter-spacing:-0.045em;color:var(--mint-ink)}
+.big small{font-size:32px;margin-left:4px;letter-spacing:0}
+.big-sub{font-size:15px;color:var(--ink-2);margin-top:8px}
+.pair{display:grid;grid-template-columns:minmax(0,1fr) 92px minmax(0,1fr);align-items:stretch}
+.std{border-radius:12px;padding:16px 18px;border:1px solid var(--line)}
+.std.blue{background:var(--blue-bg);border-color:var(--blue-line)}
+.std.mint{background:var(--mint-bg);border-color:var(--mint-line)}
+.std .nm{font-size:17px;font-weight:700}
+.std.blue .nm{color:var(--blue-ink)}.std.mint .nm{color:var(--mint-ink)}
+.std p{font-size:15px;margin:4px 0 0}
+.pair .mid{display:flex;align-items:center;justify-content:center;text-align:center;font-size:13px;color:var(--ink-2);line-height:1.45;padding:0 6px}
+/* evidence */
+.ev .v{font-size:30px;font-weight:800;line-height:1.15;font-variant-numeric:tabular-nums}
+.ev .l{font-size:14px;color:var(--ink-2);margin-bottom:6px}
+.meter{margin:10px 0 4px}
+.meter .row{display:grid;grid-template-columns:96px minmax(0,1fr) 54px;gap:10px;align-items:center;font-size:14px;margin-bottom:8px}
+.meter .track{position:relative;height:12px;background:var(--wash);border-radius:6px}
+.meter .from,.meter .to{position:absolute;left:0;top:0;bottom:0;border-radius:6px}
+.meter .to{background:var(--ink-3)}
+.meter .from{background:var(--line-2);z-index:1}
+.meter .d{font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.why{background:var(--wash);border-radius:12px;padding:16px 20px;margin:18px 0 18px;font-size:16px}
+.why b{color:var(--ink)}
+/* who */
+.who{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:16px}
+.who .side{display:flex;flex-direction:column;gap:16px}
+.who .box .cnt{font-size:30px;font-weight:800;line-height:1.1}
+.who .box .gn{font-size:16px;font-weight:700;margin:2px 0 6px}
+.steps{list-style:none;padding:0;margin:10px 0 12px;counter-reset:s}
+.steps li{position:relative;padding:8px 0 8px 40px;border-top:1px solid var(--line);font-size:15px}
+.steps li:first-child{border-top:0}
+.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:8px;width:26px;height:26px;border-radius:50%;background:var(--mint-bg);color:var(--mint-ink);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font-size:13px;padding:4px 10px;border-radius:999px;border:1px solid var(--line-2);background:var(--paper)}
+.chips .term{border-bottom:none;white-space:normal}
+.sum{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin-top:14px;font-size:15px;color:var(--ink-2)}
+.sum b{font-size:22px;color:var(--mint-ink)}
+/* flow / roadmap */
+.fw{overflow-x:auto;padding-bottom:4px}
+.flow{min-width:920px;display:grid;grid-template-columns:minmax(0,1.35fr) 92px minmax(0,1fr) 72px 150px 56px 150px;align-items:stretch}
+.stage{border:1px solid var(--line);border-radius:14px;padding:14px;background:var(--wash);display:flex;flex-direction:column;gap:10px}
+.stage .sh{font-size:15px;font-weight:700;line-height:1.4}
+.stage .sh span{display:block;font-size:13px;font-weight:600;color:var(--ink-3)}
+.tile{display:block;text-decoration:none;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 12px;transition:border-color .12s,box-shadow .12s}
+.tile:hover{box-shadow:0 0 0 2px var(--mint-line)}
+.tile .t{font-size:15px;font-weight:700}
+.tile .m{font-size:13px;color:var(--ink-2)}
+.tile .out{display:inline-block;margin-top:6px;font-size:13px;font-weight:600;padding:2px 8px;border-radius:6px}
+.tile.blue{border-left:4px solid var(--blue)}.tile.blue .out{background:var(--blue-bg);color:var(--blue-ink)}
+.tile.mint{border-left:4px solid var(--mint)}.tile.mint .out{background:var(--mint-bg);color:var(--mint-ink)}
+.tile.amber{border-left:4px solid var(--amber)}.tile.amber .out{background:var(--amber-bg);color:var(--amber-ink)}
+.conn{display:flex;flex-direction:column;justify-content:center;gap:16px;padding:0 6px}
+.conn .c{font-size:12px;font-weight:600;color:var(--ink-2);text-align:center;line-height:1.35}
+.conn .c::after{content:"";display:block;height:2px;background:var(--ink-3);margin:5px 0 0;position:relative}
+.conn .c i{display:block;height:0}
+.arrowhead{position:relative}
+.conn .c{position:relative}
+.conn .c::before{content:"";position:absolute;right:-1px;bottom:-4px;border-left:7px solid var(--ink-3);border-top:5px solid transparent;border-bottom:5px solid transparent}
+.res{border-radius:14px;background:var(--mint);color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:12px}
+.res .n{font-size:46px;font-weight:800;line-height:1}
+.res .s{font-size:14px;font-weight:600;margin-top:4px}
+.res .d{font-size:13px;opacity:.92}
+.p2{border-radius:14px;border:2px dashed var(--mint);display:flex;flex-direction:column;justify-content:center;padding:12px;text-align:center;color:var(--mint-ink)}
+.p2 b{font-size:15px}.p2 span{font-size:13px;color:var(--ink-2)}
+.time{min-width:920px;display:grid;grid-template-columns:repeat(10,minmax(0,1fr));margin-top:14px;font-size:13px;color:var(--ink-3);border-top:1px solid var(--line-2)}
+.time div{padding-top:6px;border-left:1px solid var(--line)}
+.lanes{min-width:920px;display:grid;grid-template-columns:repeat(20,minmax(0,1fr));row-gap:6px;margin-top:6px}
+.lane{border-radius:6px;font-size:12.5px;font-weight:600;padding:3px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.l-blue{background:var(--blue-bg);color:var(--blue-ink)}.l-mint{background:var(--mint-bg);color:var(--mint-ink)}.l-amber{background:var(--amber-bg);color:var(--amber-ink)}.l-gray{background:var(--wash);color:var(--ink-2)}
+/* products */
+.prod{border-radius:14px;padding:20px;border:1px solid var(--line)}
+.prod.blue{border-top:5px solid var(--blue)}.prod.mint{border-top:5px solid var(--mint)}
+.prod .nm{font-size:19px;font-weight:700}
+.prod.blue .nm{color:var(--blue-ink)}.prod.mint .nm{color:var(--mint-ink)}
+.prod .what{font-size:15px;color:var(--ink-2);margin:2px 0 12px}
+.prod .src{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:13px;color:var(--ink-2);margin:12px 0}
+.prod .src span{background:var(--wash);padding:3px 8px;border-radius:6px}
+.prod .src i{font-style:normal;color:var(--ink-3)}
+.uselist{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.uselist li{display:grid;grid-template-columns:118px minmax(0,1fr);gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px}
+.uselist li b{font-size:14px;color:var(--ink-2)}
+.loop{margin-top:16px;border:2px dashed var(--amber);border-radius:14px;background:var(--amber-bg);padding:14px 18px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+.loop div{font-size:14px;padding:0 14px;position:relative}
+.loop div+div::before{content:"→";position:absolute;left:-6px;top:0;color:var(--amber-ink);font-weight:700}
+.loop b{display:block;color:var(--amber-ink);font-size:14px}
+/* program */
+.prog{border:1px solid var(--line);border-radius:16px;padding:24px 26px;margin:0 0 24px;scroll-margin-top:80px}
+.prog:target{box-shadow:0 0 0 3px var(--mint-line)}
+.prog.blue{border-top:5px solid var(--blue)}.prog.mint{border-top:5px solid var(--mint)}.prog.amber{border-top:5px solid var(--amber)}
+.ph{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.ph h3{font-size:20px;margin:0}
+.facts{display:flex;gap:6px;flex-wrap:wrap}
+.facts span{font-size:14px;padding:3px 10px;border-radius:6px;background:var(--wash)}
+.purpose{font-size:15px;color:var(--ink-2);margin:0 0 12px}
+.check{display:grid;grid-template-columns:110px minmax(0,1fr);border-top:1px solid var(--line);margin-top:16px}
+.check>div{padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.check .k{font-weight:700;color:var(--ink-2)}
+.if{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:2px}
+.if div{font-size:14.5px;background:var(--wash);border-radius:10px;padding:10px 12px}
+.if b{display:block;font-size:14px}
+/* results */
+.qs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:22px}
+.q .qq{font-size:17px;font-weight:700;margin-bottom:8px}
+.q .how{font-size:14.5px;color:var(--ink-2);margin-bottom:10px}
+.q .tg{font-size:15px;font-weight:700;color:var(--mint-ink)}
+.next{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.next .box h3{font-size:16px;margin-bottom:10px}
+.next .opt{display:grid;grid-template-columns:minmax(0,1fr) 22px minmax(0,1fr);gap:6px;align-items:center;font-size:14.5px;padding:8px 0;border-top:1px solid var(--line)}
+.next .opt span:nth-child(2){color:var(--ink-3);text-align:center}
+.note{font-size:14px;color:var(--ink-2);border-left:3px solid var(--line-2);padding:2px 0 2px 12px;margin:14px 0}
+footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-3)}
+@media (max-width:760px){
+  h1{font-size:27px}h2{font-size:21px}
+  .hero{grid-template-columns:1fr;gap:16px}.big{font-size:76px}
+  .pair{grid-template-columns:1fr}.pair .mid{padding:8px 0}
+  .grid2,.grid3,.who,.qs,.next,.if{grid-template-columns:1fr}
+  .loop{grid-template-columns:1fr;gap:10px}.loop div+div::before{content:"↓";left:0;top:-14px}
+  .check{grid-template-columns:84px minmax(0,1fr)}
+  .prog{padding:18px}
+  .uselist li{grid-template-columns:96px minmax(0,1fr)}
+}
+
+.delta .row{display:grid;grid-template-columns:72px 104px minmax(0,1fr) 52px;gap:10px;align-items:center;font-size:14px;margin:10px 0}
+.delta .vals{font-variant-numeric:tabular-nums;color:var(--ink-2)}
+.delta .bar{height:14px;border-radius:7px;background:var(--mint)}
+.delta .d{font-size:18px;font-weight:800;text-align:right;color:var(--mint-ink);font-variant-numeric:tabular-nums}
+.delta .cap{font-size:15px;font-weight:600;margin:6px 0 0}
+.sw{min-width:1000px;display:grid;grid-template-columns:76px minmax(0,1.55fr) 104px minmax(0,1fr) 54px 150px 46px 160px}
+.sw .hd{padding:0 0 10px;font-size:15px;font-weight:700;line-height:1.4}
+.sw .hd span{display:block;font-size:13px;font-weight:600;color:var(--ink-3)}
+.sw .lane-l{font-size:13px;font-weight:700;color:var(--ink-3);padding-top:10px}
+.sw .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.sw .tile{height:100%}
+.sw .card{border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:14px;background:var(--paper);height:100%}
+.sw .card .t{font-size:15px;font-weight:700}
+.sw .card.blue{background:var(--blue-bg);border-color:var(--blue-line)}.sw .card.blue .t{color:var(--blue-ink)}
+.sw .card.mint{background:var(--mint-bg);border-color:var(--mint-line)}.sw .card.mint .t{color:var(--mint-ink)}
+.sw .card.amber{background:var(--amber-bg);border-color:var(--amber-line)}.sw .card.amber .t{color:var(--amber-ink)}
+.sw .card .chips{margin-top:6px}.sw .card .chips span{font-size:12.5px;padding:2px 8px}
+.sw .use{font-size:14px;border-top:2px solid var(--line-2);padding:8px 2px 0}
+.sw .use b{display:block;font-size:13px;color:var(--ink-3)}
+.ar{display:flex;flex-direction:column;justify-content:center;padding:0 8px}
+.ar .lb{font-size:12px;font-weight:700;text-align:center;line-height:1.35;color:var(--ink-2);margin-bottom:5px}
+.ar .ln{height:2px;background:var(--ink-3);position:relative}
+.ar .ln::after{content:"";position:absolute;right:-2px;top:-5px;border-left:8px solid var(--ink-3);border-top:6px solid transparent;border-bottom:6px solid transparent}
+.ar.blue .lb{color:var(--blue-ink)}.ar.blue .ln{background:var(--blue)}.ar.blue .ln::after{border-left-color:var(--blue)}
+.ar.dash .ln{background:none;border-top:2px dashed var(--mint);height:0}.ar.dash .ln::after{border-left-color:var(--mint);top:-7px}
+.dn{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:6px 0;font-size:12.5px;font-weight:600;color:var(--ink-3);text-align:center}
+.dn.one{grid-template-columns:1fr}
+.sw .gap{height:14px}
+a.lane{text-decoration:none;display:block}
+a.lane:hover{filter:brightness(.96);box-shadow:0 0 0 2px var(--mint-line)}
+.psfrow{display:grid;grid-template-columns:96px minmax(0,1fr);border-top:1px solid var(--line);margin-bottom:14px}
+.psfrow>div{padding:9px 0;border-bottom:1px solid var(--line);font-size:15px}
+.psfrow .k{font-weight:700;color:var(--ink-2)}
+.time,.lanes{min-width:1000px}
+</style>
+</head>
+<body>
+
+<nav class="toc" aria-label="목차"><div class="toc-in">
+  <b>컬처 앰배서더 Phase 1</b>
+  <a href="#s1">요약</a><a href="#s2">왜 지금</a><a href="#s3">가설과 확인</a><a href="#s4">누가</a><a href="#s5">50명이 되는 흐름</a><a href="#s6">프로그램 운영</a>
+</div></nav>
+
+<main class="page">
+
+<section id="s1" class="first">
+  <p class="no">2026년 10월 보고 · Phase 1 (26년 10월~27년 6월)</p>
+  <h1>배민 2.0이 지향하는 방식으로 일하는 리더, 컬처 앰배서더 50명을 양성합니다</h1>
+  <p class="lead">리더들과 함께 배민 2.0의 일하는 방식과 배민다움을 정리합니다. 그 과정에서 리더가 먼저 바뀌고, 바뀐 50명이 다음 단계에서 컬처를 조직 전체로 넓혀 갑니다.</p>
+  <div class="hero">
+    <div><div class="big">50<small>명</small></div><div class="big-sub">27년 6월까지 양성할 컬처 앰배서더</div></div>
+    <div class="pair">
+      <div class="std blue"><div class="nm">배민 HOM</div><p>주간 보고, 1on1, 목표 관리, 피드백, 평가 같은 리더의 일하는 방식을 우리 회사 방식으로 정리한 원칙과 양식</p></div>
+      <div class="mid">배민다움을<br>매일의 일로<br>옮깁니다</div>
+      <div class="std mint"><div class="nm">배민 2.0의 배민다움</div><p>어떤 사람과 함께하고, 리더는 어떻게 이끌고, 무엇을 기준으로 판단하는지 정리한 정의</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <p class="no">왜 지금</p>
+  <h2>구성원은 회사가 무엇을 하는지는 알지만, 왜 그렇게 하는지에는 공감하지 못하고 있습니다</h2>
+  <div class="grid3">
+    <div class="box delta">
+      <div class="ev"><div class="l">펄스 서베이, 26년 4월 → 9월 (10점 만점)</div></div>
+      <div class="row"><span>안건 공유</span><span class="vals">5.40 → 5.89</span><div><div class="bar" style="width:100%"></div></div><span class="d">+0.49</span></div>
+      <div class="row"><span>전략 확신</span><span class="vals">4.80 → 4.98</span><div><div class="bar" style="width:37%"></div></div><span class="d">+0.18</span></div>
+      <p class="cap">공유는 늘었지만 확신은 거의 그대로입니다.</p>
+    </div>
+    <div class="box ev"><div class="l">최근 3~4년 안에 합류한 구성원</div><div class="v">60% 이상</div><p class="small muted" style="margin:6px 0 0">함께 공유하는 정체성이 약합니다.</p></div>
+    <div class="box ev"><div class="l">배민다움에 남은 과거의 이미지</div><div class="v">'배려', '착함'</div><p class="small muted" style="margin:6px 0 0">배민 2.0의 배민다움은 아직 정의되지 않았습니다.</p></div>
+  </div>
+  <div class="why"><b>이유</b> 배민 2.0에 맞는 일하는 방식과 배민다움이 아직 정리되어 있지 않습니다.</div>
+</section>
+
+<section id="s3">
+  <p class="no">가설과 확인</p>
+  <h2>리더가 먼저 바뀌면, 그 리더가 컬처를 넓히는 출발점이 됩니다</h2>
+  <div class="hyp"><div class="k">가설</div><p>리더가 배민 HOM과 배민다움을 직접 정리하거나 배워서 자기 조직에서 써 보면, 그 리더의 일하는 방식이 실제로 바뀔 것입니다.</p></div>
+  <p class="muted small" style="margin-bottom:22px">이렇게 바뀐 리더를 컬처 앰배서더라고 부릅니다. 바뀌었는지는 <span class="term" tabindex="0" data-tip="함께 일하는 구성원과 동료가 리더의 행동을 관찰해 평가하는 진단입니다. 27년 7월에 다시 수집합니다.">리더십 다면진단</span>으로 확인합니다.</p>
+
+  <h3>27년 7월, 세 가지를 확인합니다</h3>
+  <div class="qs">
+    <div class="box q"><div class="qq">앰배서더가 실제로 바뀌었나</div><div class="how">아래 5개 문항의 평균이 0.5점 이상 오른 앰배서더 수</div><div class="tg">50명 중 33명 이상 <span class="tag">안</span></div></div>
+    <div class="box q"><div class="qq">배민 HOM과 배민다움이 회사에 자리 잡았나</div><div class="how">배민다움 확정(26년 12월), 배민 HOM 배포(27년 1월), 채용·온보딩·육성·평가 기준에 반영(27년 상반기)</div><div class="tg">모두 완료</div></div>
+    <div class="box q"><div class="qq">배워서 쓴 리더도 직접 만든 리더만큼 바뀌나</div><div class="how">배민다움 내재화 그룹 24명의 점수 상승폭을, 직접 만든 26명의 상승폭과 비교</div><div class="tg">26명 상승폭의 80% 이상 <span class="tag">안</span></div></div>
+  </div>
+
+  <div class="tw"><table>
+    <thead><tr><th style="width:120px">관련</th><th>리더십 다면진단 문항</th><th style="width:150px">현재 (전사 리더, 10점 만점)</th></tr></thead>
+    <tbody>
+      <tr><td style="color:var(--blue-ink);font-weight:700">배민 HOM</td><td>Q6 무엇을 달성해야 목표를 이룬 것인지 구성원이 이해하도록 설명한다</td><td class="n">7.6</td></tr>
+      <tr><td style="color:var(--blue-ink);font-weight:700">배민 HOM</td><td>Q17 정기적으로 1on1을 갖고 업무 진행 상황과 구성원의 상태를 파악한다</td><td class="n">7.7</td></tr>
+      <tr><td style="color:var(--blue-ink);font-weight:700">배민 HOM</td><td>Q12 업무 결과에 대해 잘한 점과 개선할 점을 구체적으로 피드백한다</td><td class="n">7.4</td></tr>
+      <tr><td style="color:var(--mint-ink);font-weight:700">배민다움</td><td>Q26 의사결정에서 우아한 일원칙을 기준으로 일관되게 판단한다</td><td class="n">7.1</td></tr>
+      <tr><td style="color:var(--mint-ink);font-weight:700">배민다움</td><td>Q27 조직에 기대하는 일하는 방식과 기준을 스스로도 일관되게 실천한다</td><td class="n">7.6</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">앰배서더는 선발된 리더라 출발점이 다를 수 있어서, 점수 수준이 아니라 상승폭으로 비교합니다.</p>
+
+  <h3 style="margin-top:24px">결과에 따라 Phase 2를 정합니다</h3>
+  <div class="next">
+    <div class="box"><h3>앰배서더를 계속 양성할 방식</h3>
+      <div class="opt"><span>앰배서더가 전체 리더보다 더 바뀜</span><span>→</span><span>같은 방식으로 다음 앰배서더를 양성</span></div>
+      <div class="opt"><span>차이가 없음</span><span>→</span><span>배민 HOM과 배민다움을 평가와 목표 수립 같은 제도에 더 깊이 연결</span></div>
+    </div>
+    <div class="box"><h3>전사로 전파할 방식</h3>
+      <div class="opt"><span>배워서 쓴 리더도 비슷하게 바뀜</span><span>→</span><span>배워서 쓰는 방식으로 전사에 전파</span></div>
+      <div class="opt"><span>배워서 쓴 리더가 덜 바뀜</span><span>→</span><span>참여자가 직접 고쳐 써 보는 과정을 넣어 전파</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="s4">
+  <p class="no">누가</p>
+  <h2>컬처 앰배서더 50명은 세 그룹으로 모입니다</h2>
+  <div class="who">
+    <div class="box">
+      <div class="cnt" style="color:var(--mint-ink)">18명</div>
+      <div class="gn">배민다움 정의 워크숍 참여 리더</div>
+      <p class="small muted" style="margin:0">전 구성원을 대상으로 세 단계를 거쳐 선발했습니다. HOM 북스터디 참여자와 피플부문은 제외했습니다.</p>
+      <ol class="steps">
+        <li>성과(저성과자 제외)와 근무시간(42시간 미만 제외)으로 1차 선정하고, 이슈 대상자를 제외</li>
+        <li>우아한서베이 응답 결과와 성과, 잠재력, 영향력으로 선별</li>
+        <li><span class="term" tabindex="0" data-tip="성과 수준(23~25년 연말평가), 컬처 내재화, 조직 내 평판(리더십), 조직 내 영향 범위(전사, 부문, 실 등), 추가 가점(최대 0.3점)의 다섯 항목입니다.">스코어카드</span> 점수 상위 10%를 선정한 뒤, 조직별 배분과 HR의 적정성 판단</li>
+      </ol>
+      <a class="btn" href="https://docs.google.com/spreadsheets/d/1TGnyeeDstQXwykJ3c6pQhsGcpeBc3zhl7SK6hc9p4RU/edit?gid=509468443#gid=509468443" target="_blank" rel="noopener">선발 기준과 명단 보기 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 3h7v7M13 3 5 11"/></svg></a>
+    </div>
+    <div class="side">
+      <div class="box"><div class="cnt" style="color:var(--blue-ink)">8명</div><div class="gn">HOM 북스터디 참여 리더</div><p class="small muted" style="margin:0">26년 10월부터 진행 중인 HOM 북스터디의 현업 리더 5명과 HR 3명입니다.</p></div>
+      <div class="box"><div class="cnt" style="color:var(--amber-ink)">24명</div><div class="gn">배민다움 내재화 그룹</div><p class="small muted" style="margin:0">27년 1월 시작 전에 부문 구성을 고려해 추가로 선정합니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="s5">
+  <p class="no">50명이 되는 흐름</p>
+  <h2>26명이 배민 HOM과 배민다움을 만들며 먼저 바뀌고, 24명이 이를 배워 쓰며 50명이 됩니다</h2>
+
+  <div class="fw"><div class="sw">
+    <div></div>
+    <div class="hd">① 만들며 먼저 바뀝니다<span>26년 10월 ~ 27년 1월 · 26명</span></div>
+    <div></div>
+    <div class="hd">② 배워 쓰며 바뀝니다<span>27년 1월 ~ 4월 · 24명</span></div>
+    <div></div>
+    <div class="hd">③ 양성 완료<span>27년 6월</span></div>
+    <div></div>
+    <div class="hd">다음 단계<span>27년 6월 ~</span></div>
+
+    <div class="lane-l">사람</div>
+    <div class="two">
+      <a class="tile blue" href="#p1"><div class="t">HOM 북스터디 8명</div><div class="m">책을 읽고 회차마다 일하는 방식 하나를 정해 자기 조직에 적용</div></a>
+      <a class="tile mint" href="#p2"><div class="t">배민다움 정의 워크숍 18명</div><div class="m">회사의 지향점을 읽고 자기 조직의 실제 장면으로 토론</div></a>
+    </div>
+    <div class="ar blue"><div class="lb">HOM 북스터디의<br>현업 리더 5명이<br>스터디장으로</div><div class="ln"></div></div>
+    <a class="tile amber" href="#p3"><div class="t">배민다움 내재화 그룹 24명</div><div class="m">배민 HOM과 배민다움을 배우고 자기 조직에 적용</div></a>
+    <div class="ar"><div class="lb">26명<br>+ 24명</div><div class="ln"></div></div>
+    <div class="res"><div class="n">50명</div><div class="s">컬처 앰배서더</div></div>
+    <div class="ar dash"><div class="lb">&nbsp;</div><div class="ln"></div></div>
+    <div class="p2"><b>Phase 2</b><span>50명이 소속 조직과 전사에 직접 전파</span></div>
+
+    <div></div>
+    <div class="dn"><span>↓ 만듭니다</span><span>↓ 만듭니다</span></div>
+    <div></div>
+    <div class="dn one"><span>↓ 써 보며 고칠 점을 모읍니다</span></div>
+    <div></div><div></div><div></div><div></div>
+
+    <div class="lane-l">결과물</div>
+    <div class="two">
+      <div class="card blue"><div class="t">배민 HOM</div><div class="small muted">27년 1월 배포</div>
+        <div class="chips">
+          <span class="term" tabindex="0" data-tip="한 일이 아니라 결과와 다음 주 예상 결과로 보고하는 방식">결과 중심 주간 보고</span>
+          <span class="term" tabindex="0" data-tip="정기 1on1의 주기, 안건, 진행 방식">1on1</span>
+          <span class="term" tabindex="0" data-tip="Problem Solving Framework로 문제를 정의하고 가설과 지표로 푸는 방식">문제 해결</span>
+          <span class="term" tabindex="0" data-tip="목표와 핵심결과를 세우고 정기적으로 점검하는 방식">목표·핵심결과</span>
+          <span class="term" tabindex="0" data-tip="조직 사이의 역할과 이견을 조율하는 방식">크로스팀 협업</span>
+          <span class="term" tabindex="0" data-tip="구성원의 숙련도에 맞게 점검과 피드백의 주기를 정하고, 일을 맡길 때 다시 볼 시점을 합의하는 방식">빠른 피드백 루프</span>
+          <span class="term" tabindex="0" data-tip="성과 평가 면담의 원칙과 진행 방식">성과 평가</span>
+        </div></div>
+      <div class="card mint"><div class="t">배민 2.0의 배민다움</div><div class="small muted">26년 12월 경영진 결정</div>
+        <div class="chips">
+          <span class="term" tabindex="0" data-tip="배민 2.0에서 함께 일하고 싶은 사람의 모습">인재상</span>
+          <span class="term" tabindex="0" data-tip="배민 2.0에서 조직을 이끄는 리더의 모습">리더상</span>
+          <span class="term" tabindex="0" data-tip="채용, 육성, 평가에서 반드시 지킬 회사의 철학">피플 시스템 기준</span>
+          <span class="term" tabindex="0" data-tip="우아한 일원칙의 의미, 자주 생기는 오해, 판단이 애매할 때 스스로 던질 질문">일원칙 해설</span>
+        </div></div>
+    </div>
+    <div class="ar"><div class="lb">배민 HOM과<br>배민다움을<br>교재로</div><div class="ln"></div></div>
+    <div class="card amber"><div class="t">현장에서 고친 버전</div>적용 사례와 고칠 점을 모아 27년 4월 말에 배민 HOM과 배민다움을 업데이트</div>
+    <div class="ar"><div class="lb">&nbsp;</div><div class="ln"></div></div>
+    <div class="card"><div class="t">업데이트된<br>배민 HOM과 배민다움</div></div>
+    <div class="ar dash"><div class="lb">&nbsp;</div><div class="ln"></div></div>
+    <div class="card"><div class="t">전파의 내용</div>Phase 2에서 50명이 전하는 것</div>
+
+    <div class="gap" style="grid-column:1 / -1"></div>
+    <div class="lane-l">쓰이는 곳</div>
+    <div class="two">
+      <div class="use"><b>배민 HOM</b>리더의 주간 보고, 1on1, 피드백, 평가 면담 운영, 27년 목표 수립</div>
+      <div class="use"><b>배민다움</b>채용(<span class="term" tabindex="0" data-tip="지원자가 배민다움에 맞는 사람인지 확인하는 채용 면접">우아핏 바레이저 면접</span>), 온보딩, 육성, 평가 기준, 배민 어워즈 추천·선발 기준</div>
+    </div>
+    <div></div>
+    <div class="use" style="grid-column:4 / 7"><b>27년 2월 ~ 5월</b>확정된 배민 HOM과 배민다움을 전사에 알립니다. 배민다움은 기준대로 일한 사례를 소개하는 사내 콘텐츠 같은 형태로 전합니다.</div>
+  </div>
+
+  <div class="time" style="margin-top:26px"><div>26.10</div><div>11</div><div>12</div><div>27.1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div></div>
+  <div class="lanes">
+    <a class="lane l-blue" href="#p1" style="grid-column:1 / 8;grid-row:1">HOM 북스터디 10/13~1/5</a>
+    <a class="lane l-mint" href="#p2" style="grid-column:2 / 5;grid-row:2">배민다움 정의 워크숍</a>
+    <a class="lane l-mint" href="#p2" style="grid-column:5 / 7;grid-row:2">배민다움 확정</a>
+    <a class="lane l-amber" href="#p3" style="grid-column:7 / 15;grid-row:3">배민다움 내재화 그룹 1~4월</a>
+    <div class="lane l-gray" style="grid-column:9 / 17;grid-row:4">배민 HOM과 배민다움 전사에 알리기</div>
+    <a class="lane l-gray" href="#s3" style="grid-column:19 / 21;grid-row:4">다면진단</a>
+  </div>
+  </div>
+</section>
+
+<section id="s6">
+  <p class="no">프로그램 운영</p>
+  <h2>세 프로그램은 각자의 문제와 가설을 갖고, 같은 방법으로 확인합니다</h2>
+
+  <article id="p1" class="prog blue">
+    <div class="ph"><h3>HOM 북스터디</h3><div class="facts"><span>8명</span><span>26년 10/13 ~ 27년 1/5</span><span>격주 7회</span></div></div>
+    <div class="psfrow">
+      <div class="k">문제</div><div>리더의 일하는 방식에 회사 공통의 방식이 없습니다.</div>
+      <div class="k">원인</div><div>보고, 1on1, 목표 관리, 피드백, 평가를 어떻게 할지가 리더 개인의 경험에 맡겨져 있습니다.</div>
+    </div>
+    <div class="hyp blue"><div class="k">가설</div><p>리더가 우리 회사의 일하는 방식을 직접 정리하고 자기 조직에서 써 보면, 그 리더의 운영 방식이 바뀔 것입니다.</p></div>
+    <h3 style="font-size:16px">실행</h3>
+    <div class="tw"><table>
+      <thead><tr><th style="width:120px">회차</th><th style="width:160px">책의 범위</th><th>정리하는 방식</th></tr></thead>
+      <tbody>
+        <tr><td class="n">1 · 10/13</td><td>서문, 1~2장</td><td>결과 중심 주간 보고</td></tr>
+        <tr><td class="n">2 · 10/27</td><td>3장~4장 일부</td><td>1on1</td></tr>
+        <tr><td class="n">3 · 11/10</td><td>4장 나머지, 5장</td><td>문제 해결 (Problem Solving Framework)</td></tr>
+        <tr><td class="n">4 · 11/24</td><td>6장</td><td>목표·핵심결과</td></tr>
+        <tr><td class="n">5 · 12/8</td><td>7~10장</td><td>크로스팀 협업</td></tr>
+        <tr><td class="n">6 · 12/22</td><td>11~12장</td><td>빠른 피드백 루프</td></tr>
+        <tr><td class="n">7 · 27년 1/5</td><td>13~16장</td><td>성과 평가</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small muted" style="margin:8px 0 0">회차 사이 2주 동안 자기 조직에 적용해 보고, 다음 회차에서 결과를 나눕니다.</p>
+    <h3 style="font-size:16px;margin-top:18px">확인</h3>
+    <div class="tw"><table>
+      <thead><tr><th>지표</th><th style="width:170px">현재</th><th style="width:230px">목표 <span class="tag">안</span></th></tr></thead>
+      <tbody>
+        <tr><td>다면진단 Q6, Q17, Q12</td><td class="n">전사 리더 7.6 / 7.7 / 7.4</td><td>상승폭이 전체 리더보다 큼</td></tr>
+        <tr><td>27년 목표 수립에 배민 HOM의 목표·핵심결과 방식 적용</td><td>없음</td><td>현업 리더 5명의 조직 모두</td></tr>
+      </tbody>
+    </table></div>
+    <div class="if" style="margin-top:12px"><div><b>바뀌면</b>배민 HOM을 내재화 그룹과 Phase 2의 교재로 씁니다.</div><div><b>바뀌지 않으면</b>회차별 적용 결과에서 쓰이지 않은 방식을 찾아 다시 다듬습니다.</div></div>
+  </article>
+
+  <article id="p2" class="prog mint">
+    <div class="ph"><h3>배민 2.0의 배민다움 정의 워크숍</h3><div class="facts"><span>18명</span><span>26년 10월 말 ~ 11월 말</span><span>주 1회 4회</span></div></div>
+    <div class="psfrow">
+      <div class="k">문제</div><div>배민 2.0에 필요한 인재, 리더, 판단의 기준이 정의되어 있지 않습니다.</div>
+      <div class="k">원인</div><div>배민다움이 과거의 '배려', '착함' 이미지로 남아 있고, 회사가 지금 지향하는 방향이 판단의 언어로 정리된 적이 없습니다.</div>
+    </div>
+    <div class="hyp"><div class="k">가설</div><p>리더가 회사의 지향점을 읽고 자기 조직의 실제 장면으로 배민다움을 직접 정의하면, 그 기준으로 판단하게 될 것입니다.</p></div>
+    <h3 style="font-size:16px">실행</h3>
+    <p class="small muted">회차 전에 경영진의 메시지와 문서에서 인재와 리더에 대한 회사의 지향점을 발췌한 카드를 읽고, 질문 3개에 자기 경험으로 답해 옵니다.</p>
+    <div class="tw"><table>
+      <thead><tr><th style="width:56px">회차</th><th style="width:140px">주제</th><th>다루는 질문</th><th style="width:200px">정리하는 것</th></tr></thead>
+      <tbody>
+        <tr><td class="n">1</td><td>인재상</td><td>배민 2.0에서 함께 일하고 싶은 사람은 누구이고, 역량이 있어도 함께하기 어려운 사람은 누구인가</td><td>핵심 키워드와 근거가 된 장면</td></tr>
+        <tr><td class="n">2</td><td>리더상</td><td>기존 리더십에서 이어갈 것과 새로 강화할 것은 무엇인가</td><td>핵심 키워드와 근거가 된 장면</td></tr>
+        <tr><td class="n">3</td><td>피플 시스템 기준</td><td>채용, 육성, 평가 메시지 중 반드시 지킬 것과 현실과 가장 다른 것은 무엇인가</td><td>지킬 철학과 오해될 표현</td></tr>
+        <tr><td class="n">4</td><td>일원칙 해설</td><td>원칙이 잘 지켜진 장면과 잘못 적용된 장면은 무엇인가</td><td>원칙별 해설과 판단 질문</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small muted" style="margin:8px 0 12px">회차별 결과는 인터널소통팀이 통합한 후 경영진이 결정하고(26년 12월), 결정과 그 이유를 참여 리더에게 공유합니다.</p>
+    <a class="btn" href="https://commerce-intl-asset.betawoowa.in/blueboard/b55c2e8b/v3.html" target="_blank" rel="noopener">회차별 상세 진행 보기 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 3h7v7M13 3 5 11"/></svg></a>
+    <h3 style="font-size:16px;margin-top:18px">확인</h3>
+    <div class="tw"><table>
+      <thead><tr><th>지표</th><th style="width:170px">현재</th><th style="width:230px">목표 <span class="tag">안</span></th></tr></thead>
+      <tbody>
+        <tr><td>다면진단 Q26, Q27</td><td class="n">전사 리더 7.1 / 7.6</td><td>상승폭이 전체 리더보다 큼</td></tr>
+        <tr><td>배민다움이 채용, 온보딩, 육성, 평가 기준에 반영</td><td>미반영</td><td>27년 상반기 안에 반영</td></tr>
+      </tbody>
+    </table></div>
+    <div class="if" style="margin-top:12px"><div><b>바뀌면</b>같은 방식을 다음 앰배서더 양성에 씁니다.</div><div><b>바뀌지 않으면</b>정의된 배민다움을 채용과 평가 같은 실제 판단의 자리에 먼저 연결합니다.</div></div>
+  </article>
+
+  <article id="p3" class="prog amber">
+    <div class="ph"><h3>배민다움 내재화 그룹</h3><div class="facts"><span>24명 (27년 1월 선정)</span><span>27년 1월 ~ 4월</span></div></div>
+    <div class="psfrow">
+      <div class="k">문제</div><div>배민 HOM과 배민다움을 직접 만든 리더는 26명뿐입니다.</div>
+      <div class="k">원인</div><div>만드는 과정에 모든 리더가 참여할 수는 없어서, 다른 리더는 결과만 받게 됩니다.</div>
+    </div>
+    <div class="hyp amber"><div class="k">가설</div><p>직접 만들지 않은 리더도 배민 HOM과 배민다움을 배워서 자기 조직에서 써 보면, 만든 리더만큼 바뀔 것입니다.</p></div>
+    <h3 style="font-size:16px">실행</h3>
+    <p style="font-size:15px">배민 HOM과 배민다움을 배우고 자기 조직에 적용한 뒤, 고칠 점을 모아 4월 말에 업데이트합니다. 배민 HOM 스터디는 HOM 북스터디의 현업 리더 5명이 이끕니다.</p>
+    <h3 style="font-size:16px;margin-top:18px">확인</h3>
+    <div class="tw"><table>
+      <thead><tr><th>지표</th><th style="width:230px">목표 <span class="tag">안</span></th></tr></thead>
+      <tbody>
+        <tr><td>24명의 다면진단 상승폭을 직접 만든 26명의 상승폭과 비교</td><td>26명 상승폭의 80% 이상</td></tr>
+      </tbody>
+    </table></div>
+    <div class="if" style="margin-top:12px"><div><b>비슷하게 바뀌면</b>Phase 2는 배워서 쓰는 방식으로 전파합니다.</div><div><b>덜 바뀌면</b>Phase 2에 참여자가 직접 고쳐 써 보는 과정을 넣습니다.</div></div>
+  </article>
+</section>
+
+<footer>참고: <a href="https://commerce-intl-asset.betawoowa.in/blueboard/b55c2e8b/v3.html" target="_blank" rel="noopener">배민다움 정의 워크숍 회차별 상세</a>, <a href="https://docs.google.com/spreadsheets/d/1TGnyeeDstQXwykJ3c6pQhsGcpeBc3zhl7SK6hc9p4RU/edit?gid=509468443#gid=509468443" target="_blank" rel="noopener">앰배서더 선발 기준과 명단</a></footer>
+</main>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.toc a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  function on(){var y=window.scrollY+120,idx=0;secs.forEach(function(s,i){if(s&&s.offsetTop<=y)idx=i;});links.forEach(function(a,i){a.classList.toggle('on',i===idx);});}
+  window.addEventListener('scroll',on,{passive:true});on();
+})();
+</script>
+</body>
+</html>
